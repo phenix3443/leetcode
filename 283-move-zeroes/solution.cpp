@@ -9,7 +9,10 @@ public:
         int zeroStart = 0;
         for (int i=0; i < nums.size(); ++i) {
             if (nums[i]!=0){
-                iter_swap(nums.begin()+i,nums.begin()+zeroStart);
+                if(i!=zeroStart) {
+                    iter_swap(nums.begin()+i,nums.begin()+zeroStart);
+                }
+
                 zeroStart++;
             }
         }
