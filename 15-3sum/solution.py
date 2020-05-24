@@ -7,16 +7,23 @@ class Solution:
 
         m = {nums[0]: 0}
         r = []  # result
-        for i in range(1, len(nums)):
+        i = 1
+        numsLen = len(nums)
+        while i < numsLen:
             other = target - nums[i]
             if other in m:
                 r.append([other, nums[i]])
+                while i < numsLen - 1 and nums[i + 1] == nums[i]:  # skip same
+                    i += 1
+
             m[nums[i]] = i
+
+            i += 1
 
         return r
 
     def threeSum(self, nums):
-        ret = set()
+        ret = []
 
         nums.sort()  # 排序后方便two-sum夹逼
 
@@ -29,13 +36,13 @@ class Solution:
             ts = self.twoSum(nums[k + 1 :], 0 - nums[k])
 
             if ts:
-                set.update(ret, [(nums[k], t[0], t[1]) for t in ts])
+                ret.extend([(nums[k], t[0], t[1]) for t in ts])
 
             k += 1
 
-        return [list(r) for r in ret]
+        return ret
 
 
 if __name__ == "__main__":
     s = Solution()
-    print(s.threeSum([0, 0, 0, 0]))
+    print(s.threeSum([-2, 0, 1, 1, 2]))
