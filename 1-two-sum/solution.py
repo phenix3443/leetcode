@@ -1,12 +1,12 @@
 # -*- coding:utf-8; -*-
 class Solution:
     def twoSum(self, nums, target):
-        m = {}  # 使用空的集合，避免之前本身相加的判断
+        m = {}  # use the empty dict to avoid the compare location with self
 
         for i in range(len(nums)):
-            l = m.get(target - nums[i])
-            if not (l is None):
-                return [l, i]  # 因为必定l<i
+            another_idx = m.get(target - nums[i])
+            if not (another_idx is None):
+                return [another_idx, i]  # because second_num_idx<i
 
             m[nums[i]] = i
 
