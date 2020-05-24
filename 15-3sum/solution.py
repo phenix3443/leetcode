@@ -1,7 +1,22 @@
 # -*- coding:utf-8; -*-
 class Solution:
+    def twoSum(self, nums, target):
+        # nums是有序的
+        if nums[0] > target:
+            return
+
+        m = {nums[0]: 0}
+        r = []  # result
+        for i in range(1, len(nums)):
+            other = target - nums[i]
+            if other in m:
+                r.append([other, nums[i]])
+            m[nums[i]] = i
+
+        return r
+
     def threeSum(self, nums):
-        ret = []
+        ret = set()
 
         nums.sort()  # 排序后方便two-sum夹逼
 
@@ -11,30 +26,16 @@ class Solution:
             if k > 0 and nums[k] == nums[k - 1]:  # skip same
                 continue
 
-            l, r = k + 1, len(nums) - 1
-            while l < r:
-                s = nums[k] + nums[l] + nums[r]
-                if s < 0:
-                    l += 1
-                    while l < r and nums[l] == nums[l - 1]:  # skip same
-                        l += 1
-                elif s > 0:
-                    r -= 1
-                    while l < r and nums[r] == nums[r + 1]:  # skip same
-                        r -= 1
-                else:
-                    ret.append([nums[k], nums[l], nums[r]])
-                    l += 1
-                    r -= 1
-                    while l < r and nums[l] == nums[l - 1]:
-                        l += 1
-                    while l < r and nums[r] == nums[r + 1]:
-                        r -= 1
+            ts = self.twoSum(nums[k + 1 :], 0 - nums[k])
+
+            if ts:
+                set.update(ret, [(nums[k], t[0], t[1]) for t in ts])
+
             k += 1
 
-        return ret
+        return [list(r) for r in ret]
 
 
 if __name__ == "__main__":
     s = Solution()
-    print(s.threeSum([-2, 0, 1, 1, 2]))
+    print(s.threeSum([0, 0, 0, 0]))
