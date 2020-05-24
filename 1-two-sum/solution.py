@@ -1,10 +1,10 @@
 # -*- coding:utf-8; -*-
 class Solution:
     def twoSum(self, nums, target):
-        m = {v: i for i, v in enumerate(nums)}
+        m = {nums[i]: i for i in range(len(nums))}
 
-        for i, v in enumerate(nums):
-            l = m.get(target - v)
+        for i in range(len(nums)):
+            l = m.get(target - nums[i])
             if l and l != i:
                 return [i, l]
 
