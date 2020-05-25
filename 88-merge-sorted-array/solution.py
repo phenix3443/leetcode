@@ -14,15 +14,8 @@ class Solution:
 
             p -= 1
 
-        if i >= 0:
-            for k in range(i, -1, -1):
-                nums1[p] = nums1[k]
-                p -= 1
-
         if j >= 0:
-            for k in range(j, -1, -1):
-                nums1[p] = nums2[k]
-                p -= 1
+            nums1[p - j : p + 1] = nums2[0 : j + 1]
 
 
 if __name__ == "__main__":
