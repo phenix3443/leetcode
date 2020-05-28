@@ -10,21 +10,22 @@ class Solution:
         if len(arr) <= k:
             return arr
 
-        q = queue.PriorityQueue(k)
+        hp = queue.PriorityQueue(k)
 
-        for e in arr:
-            if not q.full():
-                q.put(0 - e)  # 以为优先队列默认是小根堆，但是需要将最大的数字挤出去
-            else:
-                e = -e
-                top = q.get()
-                if e > top:
-                    q.put(e)
-                else:
-                    q.put(top)
+        for e in arr[:k]:
+            hp.put(0 - e)
 
-        ret = [0 - q.get() for i in range(q.qsize())]
+        top = 0 - hp.get()  # 表示第K大个元素，这里这么绕是因为head(hp)没有heap.top() 方法
+        for e in arr[k:]:  # 这个时候堆肯定是满的
+            if e < top:
+                hp.put(0 - e)
+                top = 0 - hp.get()
+
+        hp.put(0 - top)
+
+        ret = [0 - hp.get() for i in range(k)]
         ret.reverse()
+
         return ret
 
 
