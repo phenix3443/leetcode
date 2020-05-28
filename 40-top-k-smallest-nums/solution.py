@@ -13,18 +13,14 @@ class Solution:
         hp = queue.PriorityQueue(k)
 
         for e in arr[:k]:
-            hp.put(0 - e)
+            hp.put(-e)
 
-        top = 0 - hp.get()  # 表示第K大个元素，这里这么绕是因为head(hp)没有heap.top() 方法
         for e in arr[k:]:  # 这个时候堆肯定是满的
-            if e < top:
-                hp.put(0 - e)
-                top = 0 - hp.get()
+            if e < -hp.queue[0]:
+                hp.get()
+                hp.put(-e)
 
-        hp.put(0 - top)
-
-        ret = [0 - hp.get() for i in range(k)]
-        ret.reverse()
+        ret = [-e for e in hp.queue]
 
         return ret
 
