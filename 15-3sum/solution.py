@@ -1,48 +1,27 @@
 # -*- coding:utf-8; -*-
 class Solution:
-    def twoSum(self, nums, target):
-        # nums是有序的
-        if nums[0] > target:
-            return
-
-        m = {nums[0]: 0}
-        r = []  # result
-        i = 1
-        numsLen = len(nums)
-        while i < numsLen:
-            other = target - nums[i]
-            if other in m:
-                r.append([other, nums[i]])
-                while i < numsLen - 1 and nums[i + 1] == nums[i]:  # skip same
-                    i += 1
-
-            m[nums[i]] = i
-
-            i += 1
-
-        return r
-
     def threeSum(self, nums):
-        ret = []
+        ret = set()
 
         nums.sort()  # 排序后方便two-sum夹逼
 
-        for k in range(len(nums) - 2):
-            if nums[k] > 0:  # 最小的数字已经大于0了，放弃
+        for i, v in enumerate(nums[:-2]):
+            if v > 0:  # 最小的数字已经大于0了，放弃
                 break
-            if k > 0 and nums[k] == nums[k - 1]:  # skip same
+
+            if i > 0 and nums[i] == nums[i - 1]:  # skip same
                 continue
 
-            ts = self.twoSum(nums[k + 1 :], 0 - nums[k])
+            d = {}
+            for x in nums[i + 1 :]:
+                if x not in d:  # 这里处理比较巧妙，要好好想想，因为d肯定是在nums了，下一步只要找到-v-x就可以了
+                    d[-v - x] = 1
+                else:
+                    ret.add((v, x, -v - x))
 
-            if ts:
-                ret.extend([(nums[k], t[0], t[1]) for t in ts])
-
-            k += 1
-
-        return ret
+        return [list(e) for e in ret]
 
 
 if __name__ == "__main__":
     s = Solution()
-    print(s.threeSum([-2, 0, 1, 1, 2]))
+    print(s.threeSum([0, 0, 0, 0]))
