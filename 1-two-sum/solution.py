@@ -1,16 +1,14 @@
 # -*- coding:utf-8; -*-
 class Solution:
     def twoSum(self, nums, target):
-        m = {}  # use the empty dict to avoid the compare location with self
+        m = {}  # 存储将要查找的数
 
-        for i in range(len(nums)):
-            another_idx = m.get(target - nums[i])
-            if not (another_idx is None):
-                return [another_idx, i]  # because second_num_idx<i
-
-            m[nums[i]] = i
-
-        return
+        for i, v in enumerate(nums):
+            x = m.get(v)
+            if x == None:
+                m[target - v] = i
+            else:
+                return [x, i]
 
 
 if __name__ == "__main__":
