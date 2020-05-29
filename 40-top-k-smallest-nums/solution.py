@@ -78,6 +78,10 @@ class BinaryHeap:
     def dump(self):
         return self.heap[: self.heapSize]
 
+    def build(self, array):
+        for e in array:
+            self.put(e)
+
 
 class Solution:
     def getLeastNumbers(self, arr, k):
@@ -89,8 +93,7 @@ class Solution:
 
         hp = BinaryHeap(k)
 
-        for e in arr[:k]:
-            hp.put(e)
+        hp.build(arr[:k])
 
         for e in arr[k:]:  # 这个时候堆肯定是满的
             if e < hp.peek():
