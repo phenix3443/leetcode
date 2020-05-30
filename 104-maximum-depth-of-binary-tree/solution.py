@@ -3,7 +3,4 @@ class Solution:
         if not root:
             return 0
 
-        left = self.maxDepth(root.left)
-        right = self.maxDepth(root.right)
-        m = left if left > right else right
-        return m + 1
+        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))

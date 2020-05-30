@@ -1,7 +1,18 @@
 # -*- coding:utf-8; -*-
 
 
-class Solution:
+class SolutionSort:
+    """排序
+    """
+
+    def isAnagram(self, s, t):
+        return sorted(s) == sorted(t)
+
+
+class SolutionMap:
+    """使用map
+    """
+
     def isAnagram(self, s, t):
         m = {}
         for i in s:
@@ -12,5 +23,5 @@ class Solution:
         for (k, v) in m.items():
             if v != 0:
                 return False
-        else:
-            return True
+
+        return True
