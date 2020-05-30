@@ -17,5 +17,21 @@ class Solution:
         return pre
 
 
+class Solution2:
+    """ 递归实现
+    """
+
+    def reverseList(self, head):
+        if head == None or head.next == None:
+            return head
+
+        node = head
+        head = self.reverseList(head.next)
+
+        node.next.next = node
+        node.next = None
+        return head
+
+
 if __name__ == "__main__":
     s = Solution()
