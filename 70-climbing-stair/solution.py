@@ -13,3 +13,13 @@ class Solution:
             f2 = f3
 
         return f3
+
+
+class Solution:
+    """ 递归算法
+    """
+
+    def climbStairs(self, n):
+        if n < 3:
+            return n
+        return self.climbStairs(n - 1) + self.climbStairs(n - 2)
