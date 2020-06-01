@@ -16,7 +16,7 @@ class Solution:
 
 
 class Solution:
-    """ 递归算法
+    """ 递归算法，但是提示超时
     """
 
     def climbStairs(self, n):
