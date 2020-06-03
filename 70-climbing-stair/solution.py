@@ -2,6 +2,9 @@
 
 
 class Solution:
+    """ 动态规划
+    """
+
     def climbStairs(self, n: int) -> int:
         if n < 3:
             return n
