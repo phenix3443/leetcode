@@ -21,3 +21,4 @@ n是 32 位有符号整数，其数值范围是[−231,231− 1] 。
 来源：力扣（LeetCode）
 链接：https://leetcode-cn.com/problems/powx-n
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ye
