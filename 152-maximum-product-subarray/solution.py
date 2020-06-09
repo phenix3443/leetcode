@@ -27,14 +27,18 @@ class Solution:
     def maxProduct(self, nums):
         if not nums:
             return 0
-        dp = [[0 for i in range(2)] for j in range(len(nums))]
+
+        dp = [[0 for i in range(2)] for j in range(2)]  # 因为每次都是使用前一个进行计算，所以只需要一个二位数组即可
 
         res = dp[0][0] = dp[0][1] = nums[0]
 
         for i in range(1, len(nums)):
-            dp[i][0] = min((dp[i - 1][0]) * nums[i], (dp[i - 1][1]) * nums[i], nums[i])
-            dp[i][1] = max(dp[i - 1][0] * nums[i], dp[i - 1][1] * nums[i], nums[i])
-            res = max(res, dp[i][1])
+            x, y = i % 2, (i - 1) % 2  # 巧妙的转换
+            t1 = dp[y][0] * nums[i]
+            t2 = dp[y][1] * nums[i]
+            dp[x][0] = min(t1, t2, nums[i])
+            dp[x][1] = max(t1, t2, nums[i])
+            res = max(res, dp[x][1])
 
         return res
 
