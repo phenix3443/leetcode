@@ -1,8 +1,4 @@
 # Definition for a binary tree node.
-"""思路：
-应该怎么理解递归代码？
-
-"""
 
 
 class TreeNode:
@@ -13,9 +9,12 @@ class TreeNode:
 
 
 class Solution:
-    def lowestCommonAncestor(
-        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
-    ) -> "TreeNode":
+    """递归思路：
+    1. 分别在左子树和右子树中查找p,q，如果p,q分别位于左右子树中，那么当前节点就是公共节点
+
+    """
+
+    def lowestCommonAncestor(self, root, p, q):
 
         if root == None or root == p or root == q:
             return root
