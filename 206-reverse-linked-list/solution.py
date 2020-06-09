@@ -5,19 +5,18 @@ class ListNode:
         self.next = None
 
 
-class Solution:
+class SolutionV1:
     def reverseList(self, head):
         pre, curr = None, head  # pre表示已经排好的
         while curr:
             tmp = curr.next
             curr.next = pre
-            pre = curr
-            curr = tmp
+            pre, curr = curr, tmp
 
         return pre
 
 
-class Solution2:
+class Solution:
     """ 递归实现
     """
 
@@ -31,7 +30,3 @@ class Solution2:
         node.next.next = node
         node.next = None
         return head
-
-
-if __name__ == "__main__":
-    s = Solution()
