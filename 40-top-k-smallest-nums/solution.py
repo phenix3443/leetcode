@@ -83,7 +83,7 @@ class BinaryHeap:
             self.put(e)
 
 
-class Solution:
+class SolutionV1:
     def getLeastNumbers(self, arr, k):
         if k == 0:
             return []
@@ -101,6 +101,11 @@ class Solution:
                 hp.put(e)
 
         return sorted(hp.dump())
+
+
+class Solution:
+    def getLeastNums(self, arr, k):
+        pass
 
 
 if __name__ == "__main__":

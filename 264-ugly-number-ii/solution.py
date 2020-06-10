@@ -5,8 +5,7 @@ import heapq
 
 
 class SolutionV1:
-    """ 回溯解法：
-    使用最小堆排序，时间复杂度O(nlogn)，空间复杂度O(2n)
+    """ 最小堆解法，时间复杂度O(nlogn)，空间复杂度O(2n)
     """
 
     def nthUglyNumber(self, k):
@@ -48,8 +47,7 @@ class Solution:
     """
 
     def nthUglyNumber(self, k):
-        dp = [-1] * k
-        dp[0] = 1
+        dp = [1] * k
         i2, i3, i5 = 0, 0, 0
 
         for i in range(1, k):
