@@ -2,6 +2,11 @@
 
 
 class Solution:
+    """ 与b合并两个单链表有相同之处，需要注意的是：
+    1. 数组可以倒序查找，而链表不可以。
+
+    """
+
     def merge(self, nums1, m, nums2, n):
         i, j, p = m - 1, n - 1, m + n - 1
         while i >= 0 and j >= 0:
