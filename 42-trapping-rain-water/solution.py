@@ -10,7 +10,7 @@
 4. 根据单调性和边界问题，可以想到单调栈，那么就要分析单调栈栈顶元素出栈操作和水洼面积的关系。为什么是考虑栈顶元素出栈？因为单调栈主要性质体现在栈顶元素出栈的过程中，而且根据图形可以明显看出，这是一个单调递减栈。
 
 以第二个水洼为例进行分析，：
-1. 首先根据线上的分析，这个水洼的左右边界分别是H[3]和H[7]。后续对这个结论进行验证。
+1. 首先根据以上的分析，这个水洼的左右边界分别是H[3]和H[7]。后续对这个结论进行验证。
 2. 栈顶元素H[5]。
    + 因为它是水洼的最低点，所以肯定是计算这个水洼面积过程中最初单调栈的栈顶元素。所以首先研究这个元素出栈过程，和水池面积之间的关系。
    + 左侧H[4]和右侧H[6]，对H[5]夹逼，构成了水洼的一部分。而H[4]正好是栈顶第二的元素，H[6]是将要入栈的元素。H[5]出栈过程就是计算H[4]和H[6]夹逼H[5]形成的水洼面积的过程。累计该水洼面积，便在图中做涂黑，表示这部分水池面积已经无用。
@@ -26,10 +26,10 @@
 
 class Solution:
     def trap(self, heights):
-        totalArea = 0
-        stack = []
-        for i in range(len(heights)):
-            while stack and heights[stack[-1]] < heights[i]:
+        totalArea, stack = 0, []
+
+        for i, v in enumerate(heights):
+            while stack and heights[stack[-1]] < v:  # 单调递减栈
                 idx = stack.pop()
                 if not stack:  # 左边没有比栈顶元素高的柱子
                     break
@@ -40,7 +40,6 @@ class Solution:
                 areaH = min(heights[l], heights[i]) - h  # 夹逼高度
                 areaW = i - l - 1  # 夹逼宽度
                 area = areaH * areaW  # 当前柱子被左右两边柱子夹逼形成的水洼面积。
-                # print(idx, areaH, areaW, area)
                 totalArea += area
 
             stack.append(i)
