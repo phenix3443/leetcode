@@ -16,28 +16,24 @@
 
 class Solution:
     def largestRectangleArea(self, heights):
-        maxArea = 0
-        stack = []
-        for i in range(len(heights)):
-            while stack and heights[stack[-1]] > heights[i]:
-                # idx = stack[-1]
-                h = heights[stack.pop()]
-                l = stack[-1] if stack else -1
-                r = i
-                area = h * (r - l - 1)
-                # print(idx, h, l, r, area)
-                maxArea = maxArea if maxArea > area else area
+        maxArea, stack = 0, []
+        for i, v in enumerate(heights):
+            while stack and heights[stack[-1]] > v:  # 单调递增栈，计算栈顶元素的左右边界
+                h = heights[stack.pop()]  # 矩形高度
+                l = stack[-1] if stack else -1  # 栈顶下面的元素是栈顶元素的左边界
+                r = i  # 当前入栈元素是栈顶元素的右边界
+                area = h * (r - l - 1)  # 计算面积
+                maxArea = max(maxArea, area)
 
             stack.append(i)
 
+        # 数组中剩余的元素是单调递增的，这些元素右侧都没与比他们矮的元素了
         for i in range(len(stack)):
-            # idx = stack[-1]
             h = heights[stack.pop()]
             l = stack[-1] if stack else -1
             r = len(heights)
             area = h * (r - l - 1)
-            # print(idx, h, l, r, area)
-            maxArea = maxArea if maxArea > area else area
+            maxArea = max(maxArea, area)
 
         return maxArea
 
