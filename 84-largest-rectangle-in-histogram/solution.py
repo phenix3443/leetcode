@@ -28,10 +28,10 @@ class Solution:
             stack.append(i)
 
         # 数组中剩余的元素是单调递增的，这些元素右侧都没与比他们矮的元素了
-        for i in range(len(stack)):
+        r = len(heights)
+        while stack:
             h = heights[stack.pop()]
             l = stack[-1] if stack else -1
-            r = len(heights)
             area = h * (r - l - 1)
             maxArea = max(maxArea, area)
 
