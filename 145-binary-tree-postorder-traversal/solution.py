@@ -1,37 +1,36 @@
 # -*- coding:utf-8; -*-
-class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+class SolutionV2:
+    """递归解法
+    """
 
-
-class SolutionV1:
-    def preorderTraversal(self, root):
+    def postorderTraversal(self, root):
         res = []
 
         def helper(root):
             if not root:
-                return []
-
-            res.append(root.val)
+                return
             helper(root.left)
             helper(root.right)
+            res.append(root.val)
 
         helper(root)
         return res
 
 
 class Solution:
-    def preorderTraversal(self, root):
+    """ 修改前序遍历规则，父->右->左，然后得出的结果做一下逆序
+
+    """
+
+    def postorderTraversal(self, root):
         res, stack, curr = [], [], root
         while stack or curr:
             while curr:
                 res.append(curr.val)
                 stack.append(curr)
-                curr = curr.left
-
+                curr = curr.right
             top = stack.pop()
-            curr = top.right
+            curr = top.left
 
+        res.reverse()
         return res
