@@ -5,22 +5,17 @@ class Solution:
         stack = []
         for c in s:
             if c not in m:  # 不是右括号
-                if c == " ":
-                    continue
-                else:
+                if c != " ":
                     stack.append(c)
-                    continue
+                continue
             else:
                 # 遇到右括号
-                if not stack:  # 栈空
+                if not (stack and stack[-1] == m[c]):  # 栈空
                     return False
                 else:
-                    if stack[len(stack) - 1] != m[c]:  # 顶端元素不匹配
-                        return False
-                    else:
-                        stack.pop()
+                    stack.pop()
 
-        return True if not stack else False
+        return False if stack else True
 
 
 if __name__ == "__main__":

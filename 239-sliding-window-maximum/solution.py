@@ -12,17 +12,16 @@
 
 class Solution:
     def maxSlidingWindow(self, nums, k):
-        l = len(nums)
-        res = []
-        stack = []
-        for i in range(l):
-            while stack and nums[stack[-1]] < nums[i]:
+        res, stack = [], []
+        for i, v in enumerate(nums):
+            while stack and nums[stack[-1]] < v:
                 stack.pop()
             stack.append(i)
 
             if i >= k - 1:  # 因为是从第K的元素开始计算的框中的最大值的
                 while stack and stack[0] < i - k + 1:  # i-k+1是框中第一个元素
                     stack = stack[1:]
+
                 res.append(nums[stack[0]])
 
         return res

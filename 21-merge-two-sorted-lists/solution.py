@@ -12,9 +12,7 @@ class Solution:
         """迭代算法
         """
         head = ListNode(-1)
-        p1 = l1
-        p2 = l2
-        p3 = head
+        p1, p2, p3 = l1, l2, head
 
         while p1 and p2:
             if p1.val <= p2.val:
@@ -24,7 +22,7 @@ class Solution:
                 p3.next = p2
                 p2 = p2.next
 
-            p3 = p3.next
+            p3 = p3.next  # 不要忘记
 
         p3.next = p1 if p1 else p2
 

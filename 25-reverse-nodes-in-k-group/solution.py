@@ -10,14 +10,12 @@ class Solution:
         preHead = ListNode(-1)
         preHead.next = head
 
-        start = preHead
-        end = start.next
-        count = 0
+        start, end, count = preHead, start.next, 0
         while end:
             count += 1
             if count % k == 0:  # 这里比较巧妙
                 start = self.reverse(start, end.next)  # k个节点反转
-                end = start.next
+                end = start.next  # 这里需要注意
             else:
                 end = end.next
 
