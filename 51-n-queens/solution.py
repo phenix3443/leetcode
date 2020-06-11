@@ -10,10 +10,11 @@ class Solution:
         result = []
 
         def dfs(cols, xy_sum, xy_dif):
-            if len(cols) == n:
+            row_idx = len(cols)
+            if row_idx == n:
                 result.append(cols)
                 return
-            row_idx = len(cols)
+
             for col_idx in range(n):
                 if (
                     col_idx not in cols

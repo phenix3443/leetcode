@@ -1,12 +1,11 @@
 # -*- coding:utf-8; -*-
 
-"""
-解题思路：
-
-"""
-
 
 class Solution:
+    """
+    解题思路：递归
+    """
+
     def invertTree(self, root):
         if not root:
             return

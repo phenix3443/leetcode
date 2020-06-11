@@ -61,6 +61,7 @@ class SolutionV2:
             helper(i + 1, n, s + "(")
             helper(i + 1, n, s + ")")
 
+        helper(0, n, "")
         return result
 
 
