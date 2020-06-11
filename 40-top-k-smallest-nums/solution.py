@@ -103,9 +103,15 @@ class SolutionV1:
         return sorted(hp.dump())
 
 
+import heapq
+
+
 class Solution:
-    def getLeastNums(self, arr, k):
-        pass
+    """ 使用库函数
+    """
+
+    def getLeastNumbers(self, arr, k):
+        return heapq.nsmallest(k, arr)
 
 
 if __name__ == "__main__":
