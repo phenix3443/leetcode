@@ -8,7 +8,7 @@ class Solution:
         res = []
         currLevel = [(root,)]  # 这里处理比较巧妙
         while currLevel:  # 每次处理不是单个node，而是整个列表
-            res.append([n.val for lrPairs in currLevel for n in lrPairs if n])
+            res.append([node.val for lrPairs in currLevel for node in lrPairs if node])
             currLevel = [
                 (n.left, n.right) for lrPairs in currLevel for n in lrPairs if n
             ]
