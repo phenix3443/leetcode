@@ -1,4 +1,4 @@
-// -*- coding:utf-8; -*-
+package solution
 
 func plusOne(digits []int) []int {
 	lastNot9 := -1

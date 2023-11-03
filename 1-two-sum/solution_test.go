@@ -16,12 +16,12 @@ func Test_twoSum(t *testing.T) {
 		want []int
 	}{
 		{
-			name:"正常逻辑",
-			args:args{
-				nums:[]int{},
-				target:0,
+			name: "正常逻辑",
+			args: args{
+				nums:   []int{},
+				target: 0,
 			},
-		}
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

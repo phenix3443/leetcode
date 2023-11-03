@@ -1,4 +1,5 @@
-// -*- coding:utf-8; -*-
+package solution
+
 func maxArea(height []int) int {
 	m := 0
 

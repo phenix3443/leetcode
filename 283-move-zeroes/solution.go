@@ -1,3 +1,5 @@
+package solution
+
 func moveZeroes(nums []int) {
 	zeroStart := 0
 	for i, v := range nums {

@@ -7,7 +7,7 @@
 
 
 class SolutionV1:
-    def generateParnethesis(self, n):
+    def generateParenthesis(self, n):
         # 因为最终结果是一个列表，所以先定义一个保存结果的地方
         result = []
         # 应该有一个递归函数，递归函数的作用就是生成一个个的合法的字符串
@@ -45,7 +45,7 @@ class SolutionV2:
     """ 技术上优化V1的代码，同时进一步分析代码
     """
 
-    def generateParnethesis(self, n):
+    def generateParenthesis(self, n):
         result = []
 
         def helper(i, n, s):
