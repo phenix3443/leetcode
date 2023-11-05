@@ -1,9 +1,10 @@
+from typing import List
+
+
 class Solution:
-    def twoSum(self, nums, target):
-        m = {}  # 存储将要查找的数
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        m = {}
         for i, v in enumerate(nums):
-            x = m.get(v)
-            if x is None:
-                m[target - v] = i
-            else:
-                return [x, i]
+            if target - v in m:
+                return [m[target - v], i]
+            m[v] = i

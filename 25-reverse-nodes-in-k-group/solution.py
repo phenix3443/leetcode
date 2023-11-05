@@ -1,4 +1,6 @@
-# -*- coding:utf-8; -*-
+from typing import Optional
+
+
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -6,7 +8,7 @@ class ListNode:
 
 
 class Solution:
-    def reverseKGroup(self, head, k):
+    def reverseKGroup(self, head: Optional[ListNode], k):
         preHead = ListNode(-1)
         preHead.next = head
 
@@ -35,25 +37,3 @@ class Solution:
         first.next = curr
 
         return first  # 返回下一个start位置
-
-
-if __name__ == "__main__":
-
-    def printList(head):
-        p = head
-        while p:
-            print(p.val)
-            p = p.next
-
-    nums = [1, 2, 3, 4, 5]
-    head = ListNode(0)
-    p = head
-    for i in range(len(nums)):
-        n = ListNode(nums[i])
-        p.next = n
-        p = n
-
-    printList(head.next)
-
-    s = Solution()
-    printList(s.reverseKGroup(head.next, 2))
