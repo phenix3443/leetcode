@@ -9,9 +9,12 @@ class ListNode:
 
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        pre, pre.next = self, head
+        preHead = ListNode(-1)
+        preHead.next = head
+
+        pre = preHead
         while pre.next and pre.next.next:
             a, b = pre.next, pre.next.next
             pre.next, b.next, a.next = b, a, b.next
             pre = a
-        return self.next
+        return preHead.next
