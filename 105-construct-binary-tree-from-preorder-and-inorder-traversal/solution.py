@@ -1,4 +1,6 @@
-# -*- coding:utf-8; -*-
+from typing import List, Optional
+
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, x):
@@ -8,7 +10,7 @@ class TreeNode:
 
 
 class Solution:
-    def buildTree(self, preorder, inorder):
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         if not inorder:
             return
 
@@ -19,10 +21,3 @@ class Solution:
         root.right = self.buildTree(preorder[idx + 1 :], inorder[idx + 1 :])
 
         return root
-
-
-if __name__ == "__main__":
-    preorder = [3, 9, 20, 15, 7]
-    inorder = [9, 3, 15, 20, 7]
-    s = Solution()
-    s.buildTree(preorder, inorder)

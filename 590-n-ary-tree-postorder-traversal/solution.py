@@ -1,4 +1,4 @@
-# -*- coding:utf-8; -*-
+from typing import List
 
 
 class Node:
@@ -8,15 +8,14 @@ class Node:
 
 
 class Solution:
-    def postorder(self, root):
+    def postorder(self, root: "Node") -> List[int]:
         res = []
 
         def helper(root):
             if not root:
-                return []
+                return
             for c in root.children:
                 helper(c)
-
             res.append(root.val)
 
         helper(root)

@@ -1,11 +1,10 @@
 # -*- coding:utf-8; -*-
 class Solution:
-    """ 队列处理
-    https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/solution/guan-fang-suan-fa-you-hua-pythonicji-jian-dai-ma-y/
-    主要是利用python list遍历的特性，step
-    """
-
     def zigzagLevelOrder(self, root):
+        """队列处理
+        https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/solution/guan-fang-suan-fa-you-hua-pythonicji-jian-dai-ma-y/
+        主要是利用python list遍历的特性，step
+        """
         res = []
         currLevel = [(root,)]  # 这里处理比较巧妙
         step = 1

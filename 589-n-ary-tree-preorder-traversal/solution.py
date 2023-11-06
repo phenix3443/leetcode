@@ -1,4 +1,4 @@
-# -*- coding:utf-8; -*-
+from typing import List
 
 
 class Node:
@@ -8,14 +8,13 @@ class Node:
 
 
 class Solution:
-    def preorder(self, root):
+    def preorder(self, root: "Node") -> List[int]:
         res = []
 
         def helper(root):
             if not root:
                 return []
             res.append(root.val)
-
             for c in root.children:
                 helper(c)
 

@@ -1,21 +1,22 @@
-# -*- coding:utf-8; -*-
+from typing import Optional, List
+
+
 class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
 
 class SolutionV1:
-    """ 递归思路
-    """
+    """递归思路"""
 
-    def inorderTraversal(self, root):
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         res = []
 
         def helper(root):
             if not root:
-                return []
+                return
             helper(root.left)
             res.append(root.val)
             helper(root.right)
@@ -25,10 +26,9 @@ class SolutionV1:
 
 
 class Solution:
-    """ 使用栈进行模拟递归
-    """
+    """使用栈进行模拟递归"""
 
-    def inorderTraversal(self, root):
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         res, stack, curr = [], [], root
 
         while stack or curr:

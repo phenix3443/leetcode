@@ -1,4 +1,3 @@
-# -*- coding:utf-8; -*-
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -12,8 +11,7 @@ class SolutionV1:
 
         def helper(root):
             if not root:
-                return []
-
+                return
             res.append(root.val)
             helper(root.left)
             helper(root.right)
@@ -30,8 +28,6 @@ class Solution:
                 res.append(curr.val)
                 stack.append(curr)
                 curr = curr.left
-
             top = stack.pop()
             curr = top.right
-
         return res

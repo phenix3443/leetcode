@@ -1,33 +1,28 @@
-# -*- coding:utf-8; -*-
+from typing import Set
 
 
 class Solution:
-    """
-    递归解法思路：https://leetcode.com/problems/n-queens/discuss/19810/Fast-short-and-easy-to-understand-python-solution-11-lines-76ms
-    """
-
     def solveNQueens(self, n):
-        result = []
+        """
+        DFS+剪枝：https://zhuanlan.zhihu.com/p/81849845
+        """
+        res = []
 
+        # cols[i] 表示 i 行的皇后所在列号
+        # xy_sum[i], xy_dif[i]表示 i 行的皇后所在对角线冲突条件
         def dfs(cols, xy_sum, xy_dif):
-            row_idx = len(cols)
-            if row_idx == n:
-                result.append(cols)
+            r = len(cols)  # 当前行号
+            if r == n:
+                res.append(cols)
                 return
 
-            for col_idx in range(n):
-                if (
-                    col_idx not in cols
-                    and col_idx + row_idx not in xy_sum
-                    and col_idx - row_idx not in xy_dif
-                ):
+            for c in range(n):  # 当前行每一列放置皇后的可行性
+                if c not in cols and c + r not in xy_sum and c - r not in xy_dif:
                     dfs(
-                        cols + [col_idx],
-                        xy_sum + [col_idx + row_idx],
-                        xy_dif + [col_idx - row_idx],
+                        cols + [c],
+                        xy_sum + [c + r],
+                        xy_dif + [c - r],
                     )
 
         dfs([], [], [])
-        return [
-            ["." * col + "Q" + "." * (n - col - 1) for col in plan] for plan in result
-        ]
+        return [["." * col + "Q" + "." * (n - col - 1) for col in plan] for plan in res]
