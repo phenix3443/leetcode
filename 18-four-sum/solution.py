@@ -1,5 +1,10 @@
+from typing import List
+
+
 class Solution:
-    def fourSum(self, nums, target):
+    """四数之和"""
+
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         return self.nSum(nums, target, 4)
 
     def nSum(self, nums, target, n):

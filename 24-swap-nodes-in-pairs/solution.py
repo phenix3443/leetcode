@@ -8,6 +8,8 @@ class ListNode:
 
 
 class Solution:
+    """两两交换链表中的节点"""
+
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
         preHead = ListNode(-1)
         preHead.next = head

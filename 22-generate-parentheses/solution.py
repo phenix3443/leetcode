@@ -2,6 +2,8 @@ from typing import List
 
 
 class Solution:
+    """括号生成"""
+
     def generateParenthesis(self, n: int) -> List[str]:
         result = []
 

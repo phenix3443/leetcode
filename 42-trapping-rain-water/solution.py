@@ -1,4 +1,5 @@
-# -*- coding:utf-8; -*-
+from typing import List
+
 """
 解题思路：
 1. 题目分解为求单个水洼的面积。
@@ -25,19 +26,21 @@
 
 
 class Solution:
-    def trap(self, heights):
+    """接雨水"""
+
+    def trap(self, height: List[int]) -> int:
         totalArea, stack = 0, []
 
-        for i, v in enumerate(heights):
-            while stack and heights[stack[-1]] < v:  # 单调递减栈
+        for i, v in enumerate(height):
+            while stack and height[stack[-1]] < v:  # 单调递减栈
                 idx = stack.pop()
                 if not stack:  # 左边没有比栈顶元素高的柱子
                     break
 
-                h = heights[idx]  # 当前柱子的高度
+                h = height[idx]  # 当前柱子的高度
                 l = stack[-1]  # 左侧第一个比当前柱子高的柱子
 
-                areaH = min(heights[l], heights[i]) - h  # 夹逼高度
+                areaH = min(height[l], height[i]) - h  # 夹逼高度
                 areaW = i - l - 1  # 夹逼宽度
                 area = areaH * areaW  # 当前柱子被左右两边柱子夹逼形成的水洼面积。
                 totalArea += area
@@ -45,9 +48,3 @@ class Solution:
             stack.append(i)
 
         return totalArea
-
-
-if __name__ == "__main__":
-    heights = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
-    s = Solution()
-    print(s.trap(heights))

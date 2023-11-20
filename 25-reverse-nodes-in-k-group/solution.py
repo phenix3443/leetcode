@@ -12,7 +12,8 @@ class Solution:
         preHead = ListNode(-1)
         preHead.next = head
 
-        start, end, count = preHead, start.next, 0
+        start, count = preHead, 0
+        end = start.next
         while end:
             count += 1
             if count % k == 0:  # 这里比较巧妙

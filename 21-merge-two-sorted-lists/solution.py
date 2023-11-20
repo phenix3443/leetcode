@@ -1,4 +1,4 @@
-# -*- coding:utf-8; -*-
+from typing import Optional
 
 
 class ListNode:
@@ -8,11 +8,13 @@ class ListNode:
 
 
 class Solution:
-    def mergeTwoLists(self, l1, l2):
-        """迭代算法
-        """
+    """合并两个有序链表"""
+
+    def mergeTwoLists(
+        self, list1: Optional[ListNode], list2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         head = ListNode(-1)
-        p1, p2, p3 = l1, l2, head
+        p1, p2, p3 = list1, list2, head
 
         while p1 and p2:
             if p1.val <= p2.val:
