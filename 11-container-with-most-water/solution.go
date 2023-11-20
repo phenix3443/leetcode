@@ -1,21 +1,21 @@
 package solution
 
 func maxArea(height []int) int {
-	m := 0
-
+	max := 0
 	for l, r := 0, len(height)-1; l < r; {
-		area := 0
+		area, h := 0, 0
+
 		if height[l] < height[r] {
-			area = (r - l) * height[l]
+			h = height[l]
 			l++
 		} else {
-			area = (r - l) * height[r]
+			h = height[r]
 			r--
 		}
-
-		if m < area {
-			m = area
+		area = (r - l) * h
+		if max < area {
+			max = area
 		}
 	}
-	return m
+	return max
 }
