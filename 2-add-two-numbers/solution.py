@@ -1,14 +1,18 @@
-# -*- coding:utf-8; -*-
+from typing import Optional
 
 
+# Definition for singly-linked list.
 class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 
 class Solution:
-    def addTwoNumbers(self, l1, l2):
+    def addTwoNumbers(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
+        """两数相加"""
         head = ListNode(0)  # 哨兵节点
         l3 = head
 

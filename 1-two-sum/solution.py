@@ -3,6 +3,7 @@ from typing import List
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
+        """两数之和"""
         m = {}
         for i, v in enumerate(nums):
             if target - v in m:
