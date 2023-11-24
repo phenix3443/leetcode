@@ -1,6 +1,10 @@
-# -*- coding:utf-8; -*-
+from typing import List
+
+
 class SolutionV1:
-    def permute(self, nums):
+    """全排列"""
+
+    def permute(self, nums: List[int]) -> List[List[int]]:
         result = []
 
         def helper(i, nums, r):
@@ -24,10 +28,9 @@ class SolutionV1:
 
 
 class Solution:
-    """ 从语言层面对代码进行优化
-    """
+    """从语言层面对代码进行优化"""
 
-    def permute(self, nums):
+    def permute(self, nums: List[int]) -> List[List[int]]:
         result = []
 
         numsLen = len(nums)
