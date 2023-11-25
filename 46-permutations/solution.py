@@ -7,7 +7,7 @@ class SolutionV1:
     def permute(self, nums: List[int]) -> List[List[int]]:
         result = []
 
-        def helper(i, nums, r):
+        def helper(i, r):
             # 1. 终止条件
             if i == len(nums):
                 result.append(r)
@@ -19,11 +19,11 @@ class SolutionV1:
 
             # 3. 下探递归
             for r in newR:
-                helper(i + 1, nums, r)
+                helper(i + 1, r)
 
             # 4. 清理当前层:当前层没有要清理的
 
-        helper(0, nums, [])
+        helper(0, [])
         return result
 
 
@@ -32,17 +32,15 @@ class Solution:
 
     def permute(self, nums: List[int]) -> List[List[int]]:
         result = []
+        numsLen, origNums = len(nums), set(nums)
 
-        numsLen = len(nums)
-        origNums = set(nums)
-
-        def helper(i, nums, r):
+        def helper(i, r):
             if i == numsLen:
                 result.append(r)
                 return
 
             for k in origNums - set(r):
-                helper(i + 1, nums, r + [k])
+                helper(i + 1, r + [k])
 
-        helper(0, nums, [])
+        helper(0, [])
         return result

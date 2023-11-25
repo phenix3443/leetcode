@@ -1,15 +1,13 @@
-# -*- coding:utf-8;x -*-
+from typing import List
+
+
 class Solution:
-    def groupAnagrams(self, strs):
+    """字母异位词分组"""
+
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         d = {}
         for e in strs:
             k = tuple(sorted(e))
             d[k] = d.get(k, []) + [e]
 
         return list(d.values())
-
-
-if __name__ == "__main__":
-    strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
-    s = Solution()
-    print(s.groupAnagrams(strs))
