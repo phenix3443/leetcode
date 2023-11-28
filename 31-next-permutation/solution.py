@@ -1,4 +1,5 @@
 from typing import List
+import unittest
 
 
 class Solution:
@@ -32,3 +33,14 @@ class Solution:
             nums[i], nums[j] = nums[j], nums[i]
             i += 1
             j -= 1
+
+
+class TestNextPermutation(unittest.TestCase):
+    def test_next_permutation(self):
+        target = [2, 4, 3, 1]
+        Solution().nextPermutation(target)
+        self.assertEqual(target, [3, 1, 2, 4])
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,4 +1,5 @@
 from typing import List
+import unittest
 
 
 class Solution:
@@ -24,3 +25,13 @@ class Solution:
                 r -= 1
 
         return m
+
+
+class TestMaxArea(unittest.TestCase):
+    def test_1(self):
+        height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+        self.assertEqual(Solution().maxArea(height), 49)
+
+
+if __name__ == "__main__":
+    unittest.main()

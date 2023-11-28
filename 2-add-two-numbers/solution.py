@@ -1,4 +1,5 @@
 from typing import Optional
+import unittest
 
 
 # Definition for singly-linked list.
@@ -37,3 +38,18 @@ class Solution:
             l3.next = ListNode(1)
 
         return head.next
+
+
+class TestAddTwoNumbers(unittest.TestCase):
+    def test_1(self):
+        l1 = ListNode(2, ListNode(4, ListNode(3)))
+        l2 = ListNode(5, ListNode(6, ListNode(4)))
+        l3 = ListNode(7, ListNode(0, ListNode(8)))
+        r = Solution().addTwoNumbers(l1, l2)
+        while r:
+            self.assertEqual(r.val, l3.val)
+            r, l3 = r.next, l3.next
+
+
+if __name__ == "__main__":
+    unittest.main()

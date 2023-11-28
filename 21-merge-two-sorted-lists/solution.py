@@ -1,10 +1,11 @@
 from typing import Optional
+import unittest
 
 
 class ListNode:
-    def __init__(self, x):
+    def __init__(self, x, next=None):
         self.val = x
-        self.next = None
+        self.next = next
 
 
 class Solution:
@@ -29,3 +30,21 @@ class Solution:
         p3.next = p1 if p1 else p2
 
         return head.next
+
+
+class TestMergeTwoLists(unittest.TestCase):
+    def test_mergeTwoLists(self):
+        want = ListNode(
+            1, ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(4)))))
+        )
+        target = Solution().mergeTwoLists(
+            ListNode(1, ListNode(2, ListNode(4))),
+            ListNode(1, ListNode(3, ListNode(4))),
+        )
+        while want:
+            self.assertEqual(want.val, target.val)
+            want, target = want.next, target.next
+
+
+if __name__ == "__main__":
+    unittest.main()

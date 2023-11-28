@@ -1,4 +1,5 @@
 from typing import List
+import unittest
 
 
 class Solution:
@@ -21,3 +22,16 @@ class Solution:
         helper([], candidates)
 
         return [list(nums) for nums in result]
+
+
+class TestCombinationSum(unittest.TestCase):
+    def test_combination_sum(self):
+        want = Solution().combinationSum2([10, 1, 2, 7, 6, 1, 5], 8)
+        target = [[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]]
+        self.assertEqual(len(want), len(target))
+        for v in target:
+            self.assertIn(v, want)
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,4 +1,5 @@
 from typing import List
+import unittest
 
 """
 解题思路：
@@ -48,3 +49,12 @@ class Solution:
             stack.append(i)
 
         return totalArea
+
+
+class TestTrap(unittest.TestCase):
+    def test_trap(self):
+        self.assertEqual(Solution().trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]), 6)
+
+
+if __name__ == "__main__":
+    unittest.main()

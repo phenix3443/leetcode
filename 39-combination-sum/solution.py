@@ -1,4 +1,5 @@
 from typing import List
+import unittest
 
 
 class Solution:
@@ -15,7 +16,7 @@ class Solution:
             # 应该是从candidate选出来的数的sum(numbs)=target就返回，所以这时候递归层数i应该是候选值列表。
             # 修改递归参数第一个参数i为nums，表示一个候选值列表
             if sum(nums) == target:
-                result.append(tuple(nums))
+                result.add(tuple(nums))
                 return
 
             # 如果 sum(nums)>target 这时候也应该停止了，因为candidates都是正整数
@@ -53,3 +54,15 @@ class Solution:
         helper([])
 
         return [list(nums) for nums in result]
+
+
+class TestCombinationSum(unittest.TestCase):
+    def test_combination_sum(self):
+        self.assertEqual(
+            Solution().combinationSumV2([2, 3, 6, 7], 7),
+            [[2, 2, 3], [7]],
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()

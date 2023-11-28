@@ -1,4 +1,5 @@
 from typing import List
+import unittest
 
 
 class Solution:
@@ -18,3 +19,15 @@ class Solution:
                 else:
                     ret.add((v, x, -v - x))
         return list(ret)
+
+
+class TestThreeSum(unittest.TestCase):
+    def test_1(self):
+        nums = [-1, 0, 1, 2, -1, -4]
+        r = Solution().threeSum(nums)
+        for i in r:
+            self.assertIn(sorted(i), [[-1, -1, 2], [-1, 0, 1]])
+
+
+if __name__ == "__main__":
+    unittest.main()

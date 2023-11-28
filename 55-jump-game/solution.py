@@ -1,4 +1,5 @@
 from typing import List
+import unittest
 
 
 class Solution:
@@ -11,4 +12,14 @@ class Solution:
                 max_i >= i and i + jump > max_i
             ):  # 如果当前位置能到达，并且当前位置+跳数>最远位置
                 max_i = i + jump  # 更新最远能到达位置
-        return max_i >= i
+        return max_i >= len(nums) - 1
+
+
+class TestCanJump(unittest.TestCase):
+    def test_can_jump(self):
+        self.assertEqual(Solution().canJump([2, 3, 1, 1, 4]), True)
+        self.assertEqual(Solution().canJump([3, 2, 1, 0, 4]), False)
+
+
+if __name__ == "__main__":
+    unittest.main()

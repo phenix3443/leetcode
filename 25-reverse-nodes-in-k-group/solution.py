@@ -1,10 +1,11 @@
 from typing import Optional
+import unittest
 
 
 class ListNode:
-    def __init__(self, x):
+    def __init__(self, x, next=None):
         self.val = x
-        self.next = None
+        self.next = next
 
 
 class Solution:
@@ -38,3 +39,18 @@ class Solution:
         first.next = curr
 
         return first  # 返回下一个start位置
+
+
+class TestReverseKGroup(unittest.TestCase):
+    def test_reverseKGroup(self):
+        target = Solution().reverseKGroup(
+            ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))), 3
+        )
+        want = ListNode(3, ListNode(2, ListNode(1, ListNode(4, ListNode(5)))))
+        while target:
+            self.assertEqual(target.val, want.val)
+            target, want = target.next, want.next
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,4 +1,5 @@
 from typing import List
+import unittest
 
 
 class Solution:
@@ -17,3 +18,15 @@ class Solution:
 
         helper(0, 0, "")
         return result
+
+
+class TestGenerateParenthesis(unittest.TestCase):
+    def test_generateParenthesis(self):
+        self.assertEqual(
+            Solution().generateParenthesis(3),
+            ["((()))", "(()())", "(())()", "()(())", "()()()"],
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()

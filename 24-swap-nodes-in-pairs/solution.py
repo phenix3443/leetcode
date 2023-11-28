@@ -1,10 +1,11 @@
 from typing import Optional
+import unittest
 
 
 class ListNode:
-    def __init__(self, x):
+    def __init__(self, x, next=None):
         self.val = x
-        self.next = None
+        self.next = next
 
 
 class Solution:
@@ -20,3 +21,18 @@ class Solution:
             pre.next, b.next, a.next = b, a, b.next
             pre = a
         return preHead.next
+
+
+class TestSwapPairs(unittest.TestCase):
+    def test_swapPairs(self):
+        target = Solution().swapPairs(
+            ListNode(1, ListNode(2, ListNode(3, ListNode(4))))
+        )
+        want = ListNode(2, ListNode(1, ListNode(4, ListNode(3))))
+        while target:
+            self.assertEqual(target.val, want.val)
+            target, want = target.next, want.next
+
+
+if __name__ == "__main__":
+    unittest.main()
