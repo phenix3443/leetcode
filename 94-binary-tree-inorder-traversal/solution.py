@@ -1,4 +1,5 @@
 from typing import Optional, List
+import unittest
 
 
 class TreeNode:
@@ -8,10 +9,11 @@ class TreeNode:
         self.right = right
 
 
-class SolutionV1:
-    """递归思路"""
+class Solution:
+    """二叉树的中序遍历"""
 
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        """递归思路"""
         res = []
 
         def helper(root):
@@ -24,11 +26,8 @@ class SolutionV1:
         helper(root)
         return res
 
-
-class Solution:
-    """使用栈进行模拟递归"""
-
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    def inorderTraversalV2(self, root: Optional[TreeNode]) -> List[int]:
+        """使用栈进行模拟递归"""
         res, stack, curr = [], [], root
 
         while stack or curr:
@@ -41,3 +40,15 @@ class Solution:
             curr = top.right
 
         return res
+
+
+class TestInorderTraversal(unittest.TestCase):
+    def test_inorderTraversal(self):
+        root = TreeNode(1)
+        root.right = TreeNode(2)
+        root.right.left = TreeNode(3)
+        self.assertEqual(Solution().inorderTraversal(root), [1, 3, 2])
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,44 +1,30 @@
-# -*- coding:utf-8; -*-
+from typing import List
 
 
-class SolutionV1:
-    """ 对所有数字排序，然后去nums[n/2]，时间复杂度O(nlogn)
-    """
+class Solution:
+    """多数元素"""
 
-    def majorityElement(self, nums):
+    def majorityElement(self, nums: List[int]) -> int:
+        """排序后的中位数，时间复杂度O(nlogn)，空间复杂度O(1)"""
         nums.sort()
         mid = int(len(nums) / 2)
         return nums[mid]
 
-
-class SolutionV2:
-    """ 使用哈希表统计，时间复杂度O(n)，空间复杂度O(n)
-    """
-
-    def majorityElement(self, nums):
-        static = {}
-        majEle = nums[0]
-        count = 1
+    def majorityElementV2(self, nums):
+        """使用哈希表统计，时间复杂度O(n)，空间复杂度O(n)"""
+        m = {}
+        target, count = nums[0], 1
         for n in nums:
-            static[n] = static[n] + 1 if n in static else 1
-            if static[n] > count:
-                majEle = n
-                count = static[n]
+            m[n] = m[n] + 1 if n in m else 1
+            if m[n] > count:
+                target, count = n, m[n]
+        return target
 
-        return majEle
-
-
-class Solution:
-    """ 摩尔投票法
-    """
-
-    def majorityElement(self, nums):
-        povit = nums[0]
-        count = 1
-        for i in nums[1:]:
-            count += 1 if povit == i else -1
+    def majorityElementV3(self, nums):
+        """摩尔投票法"""
+        target, count = nums[0], 1
+        for n in nums[1:]:
+            count += 1 if target == n else -1
             if count == 0:
-                povit = i
-                count = 1
-
-        return povit
+                target, count = n, 1
+        return target

@@ -2,12 +2,14 @@ from typing import Optional
 
 
 class ListNode:
-    def __init__(self, x):
+    def __init__(self, x, next=None):
         self.val = x
-        self.next = None
+        self.next = next
 
 
 class Solution:
+    """环形链表"""
+
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         slow, fast = head, head
         while fast and fast.next:

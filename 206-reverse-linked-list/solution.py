@@ -9,6 +9,8 @@ class ListNode:
 
 
 class Solution:
+    """反转链表"""
+
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         pre = None
         while head:

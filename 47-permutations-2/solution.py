@@ -1,4 +1,5 @@
 from typing import List
+import unittest
 
 
 class Solution:
@@ -21,3 +22,15 @@ class Solution:
 
         helper(0, [])
         return list(set([tuple([nums[i] for i in idxs]) for idxs in result]))
+
+
+class TestPermute(unittest.TestCase):
+    def test_permute(self):
+        self.assertEqual(
+            Solution().permute([1, 2, 3]),
+            [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]],
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()

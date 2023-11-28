@@ -1,6 +1,3 @@
-# Definition for a binary tree node.
-
-
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -9,14 +6,15 @@ class TreeNode:
 
 
 class Solution:
-    """递归思路：
-    1. 分别在左子树和右子树中查找p,q，如果p,q分别位于左右子树中，那么当前节点就是公共节点
+    """二叉树的最低公共祖先"""
 
-    """
-
-    def lowestCommonAncestor(self, root, p, q):
-
-        if root == None or root == p or root == q:
+    def lowestCommonAncestor(
+        self, root: TreeNode, p: TreeNode, q: TreeNode
+    ) -> TreeNode:
+        """
+        1. 分别在左子树和右子树中查找p,q，如果p,q分别位于左右子树中，那么当前节点就是公共节点
+        """
+        if root is None or root == p or root == q:
             return root
 
         left = self.lowestCommonAncestor(root.left, p, q)
@@ -24,7 +22,6 @@ class Solution:
 
         if left and right:
             return root
-
         elif left:
             return left
         else:

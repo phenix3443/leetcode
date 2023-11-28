@@ -1,5 +1,6 @@
 from typing import Optional, List
 import collections
+import unittest
 
 
 # Definition for a binary tree node.
@@ -11,6 +12,8 @@ class TreeNode:
 
 
 class Solution:
+    """二叉树的层序遍历"""
+
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
             return []
@@ -37,12 +40,29 @@ class Solution:
         res = []
         currLevel = [(root,)]  # 这里处理比较巧妙
         while currLevel:  # 每次处理不是单个node，而是整个列表
-            res.append([node.val for lrPairs in currLevel for node in lrPairs if node])
+            res.append([n.val for lrPairs in currLevel for n in lrPairs if n])
             currLevel = [
-                (node.left, node.right)
-                for lrPairs in currLevel
-                for node in lrPairs
-                if node
+                (n.left, n.right) for lrPairs in currLevel for n in lrPairs if n
             ]
 
         return res[:-1]  # 因为最后一层的左右儿子都是null
+
+
+class TestLevelOrder(unittest.TestCase):
+    def test_1(self):
+        node1 = TreeNode(3)
+        node2 = TreeNode(9)
+        node3 = TreeNode(20)
+        node4 = TreeNode(15)
+        node5 = TreeNode(7)
+
+        node1.left = node2
+        node1.right = node3
+        node3.left = node4
+        node3.right = node5
+
+        self.assertEqual(Solution().levelOrder(node1), [[3], [9, 20], [15, 7]])
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,4 +1,8 @@
-# -*- coding:utf-8; -*-
+from typing import List
+
+
 class Solution:
-    def largestRectangleArea(self, heights):
+    """最大矩形"""
+
+    def maximalRectangle(self, matrix: List[List[str]]) -> int:
         pass

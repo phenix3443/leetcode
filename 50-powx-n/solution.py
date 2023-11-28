@@ -1,3 +1,6 @@
+import unittest
+
+
 class Solution:
     """快速幂"""
 
@@ -15,3 +18,13 @@ class Solution:
             n = -n
 
         return self.fastPow(x, n)
+
+
+class TestMyPow(unittest.TestCase):
+    def test_myPow(self):
+        self.assertEqual(Solution().myPow(2.00000, 10), 1024.0)
+        self.assertEqual(Solution().myPow(2.00000, -2), 0.25000)
+
+
+if __name__ == "__main__":
+    unittest.main()

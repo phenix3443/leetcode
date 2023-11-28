@@ -1,3 +1,6 @@
+import unittest
+
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -5,7 +8,9 @@ class TreeNode:
         self.right = None
 
 
-class SolutionV1:
+class Solution:
+    """二叉树前序遍历"""
+
     def preorderTraversal(self, root):
         res = []
 
@@ -19,9 +24,7 @@ class SolutionV1:
         helper(root)
         return res
 
-
-class Solution:
-    def preorderTraversal(self, root):
+    def preorderTraversalV2(self, root):
         res, stack, curr = [], [], root
         while stack or curr:
             while curr:
@@ -31,3 +34,18 @@ class Solution:
             top = stack.pop()
             curr = top.right
         return res
+
+
+class TestPreorderTraversal(unittest.TestCase):
+    def test_1(self):
+        node1 = TreeNode(1)
+        node2 = TreeNode(2)
+        node3 = TreeNode(3)
+        node1.right = node2
+        node2.left = node3
+        target = Solution().preorderTraversal(node1)
+        self.assertEqual(target, [1, 2, 3])
+
+
+if __name__ == "__main__":
+    unittest.main()
